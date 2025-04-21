@@ -167,9 +167,23 @@ footer {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+@media (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: flex-start;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-footer {
+        text-align: center;
+        padding: 1rem;
+        background: #03A791;
+        margin-top: 2rem;
+        color: #ECEFCA;
+        width: 100%;
+        position: relative;
+        margin-top: auto;
     }
 
     nav {
@@ -180,7 +194,6 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-
 /* Contact form */
 .contact-form {
     margin-top: 2rem;
