@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dev Diary – Responsive Blog Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>The Dev Diary</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="blog-grid">
+            <div class="blog-card" onclick="openPopup('blog1')">
+                <div class="blog-title">Blog 1</div>
+                <div class="blog-content">Introduction to Web Development.</div>
+            </div>
+            <div class="blog-card" onclick="openPopup('blog2')">
+                <div class="blog-title">Blog 2</div>
+                <div class="blog-content">Mastering HTML & CSS for Beginners.</div>
+            </div>
+            <div class="blog-card" onclick="openPopup('blog3')">
+                <div class="blog-title">Blog 3</div>
+                <div class="blog-content">Understanding JavaScript Functions.</div>
+            </div>
+            <div class="blog-card" onclick="openPopup('blog4')">
+                <div class="blog-title">Blog 4</div>
+                <div class="blog-content">Responsive Design Tips and Tricks.</div>
+            </div>
+            <div class="blog-card" onclick="openPopup('blog5')">
+                <div class="blog-title">Blog 5</div>
+                <div class="blog-content">CSS Grid vs Flexbox: When to Use What?</div>
+            </div>
+            <div class="blog-card" onclick="openPopup('blog6')">
+                <div class="blog-title">Blog 6</div>
+                <div class="blog-content">Creating Interactive UIs with JavaScript.</div>
+            </div>
+        </div>
+        <a href="blogs.html" class="read-more">Read More Blogs</a>
+    </div>
+
+    <footer id="main-footer">
+        &copy; 2025 My Blog Website. All rights reserved.
+    </footer>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <div id="popup-details">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const blogData = {
+            blog1: {
+                title: "Introduction to Web Development",
+                content: `Web development is a growing field that offers numerous opportunities for those looking to build and design websites and web applications. In this blog, we explore the basics of web development, including HTML, CSS, and JavaScript. These three technologies are fundamental for creating functional, attractive, and user-friendly websites. HTML serves as the structure of a website, CSS handles the presentation, and JavaScript enables interactivity.
+                <br> <br>
+                As the demand for web developers continues to grow, it’s essential to understand how these technologies work together. Web development is a versatile field, and mastering it opens doors to various career paths, from front-end to back-end development. Whether you're building static websites or dynamic web applications, having a strong foundation in web development is key to success.`
+            },
+            blog2: {
+                title: "Mastering HTML & CSS for Beginners",
+                content: `HTML and CSS are the building blocks of the web. Understanding the core concepts of these languages is essential for anyone starting in web development. Learn how to structure your content and style your pages effectively. HTML is used to create the structure of your website, such as headings, paragraphs, and images. CSS is used to style the HTML elements, including setting colors, fonts, and layouts.
+                <br> <br>
+                With HTML and CSS, you can create stunning, responsive designs that work across devices. Whether you're designing for a desktop, tablet, or mobile phone, knowing how to build a responsive website is a crucial skill for modern web development. Mastering these two languages will give you the tools you need to start building websites right away.`
+            },
+            blog3: {
+                title: "Understanding JavaScript Functions",
+                content: `JavaScript is one of the most popular programming languages today. It allows you to create interactive websites. This blog will dive into the key functions and concepts of JavaScript, making it easier for you to understand its power. JavaScript can be used for everything from simple form validation to complex web applications. It’s an essential tool for any web developer looking to create interactive and dynamic content.
+                <br> <br>
+                Understanding JavaScript’s functions, loops, and objects is crucial to becoming proficient in the language. By mastering JavaScript, you’ll be able to create websites that respond to user input, display dynamic content, and perform complex tasks on the client-side. JavaScript is also commonly used in conjunction with frameworks like React and Angular to build scalable and performant applications.`
+            },
+            blog4: {
+                title: "Responsive Design Tips and Tricks",
+                content: `Responsive design is a must for modern web applications. In this blog, we cover essential tips and tricks for creating designs that look great on all screen sizes, from mobile phones to large desktop monitors. Responsive design allows your website to adjust its layout depending on the device used to view it, ensuring that it’s easy to navigate and looks great on any screen size.
+                <br> <br>
+                Key concepts such as media queries, flexible grid layouts, and fluid images are fundamental to mastering responsive design. With these techniques, you can create websites that offer an optimal user experience across all devices. As mobile usage continues to rise, understanding responsive design is critical for any web developer looking to stay competitive in the industry.`
+            },
+            blog5: {
+                title: "CSS Grid vs Flexbox: When to Use What?",
+                content: `CSS Grid and Flexbox are two of the most powerful layout systems in CSS. This blog compares the two and explains when to use each method to create flexible and responsive web layouts. CSS Grid is ideal for building complex layouts with rows and columns, while Flexbox is better suited for one-dimensional layouts, such as aligning items horizontally or vertically.
+                <br> <br>
+                By understanding both CSS Grid and Flexbox, you’ll be able to create a wide variety of layouts with ease. These techniques are both powerful and flexible, allowing web developers to create modern, responsive designs that adapt to different screen sizes. Each system has its strengths, and knowing when to use each can significantly improve your web development workflow.`
+            },
+            blog6: {
+                title: "Creating Interactive UIs with JavaScript",
+                content: `Interactive user interfaces (UIs) are essential for a great user experience. Learn how to use JavaScript to create dynamic and interactive web elements such as buttons, forms, and sliders. JavaScript is used to manipulate the DOM (Document Object Model), allowing you to create UIs that respond to user actions in real-time.
+                <br> <br>
+                With interactive UIs, you can create websites that engage users by providing them with immediate feedback and dynamic content. Whether it's creating an image carousel or a form validation feature, JavaScript enables you to bring your website to life. Understanding how to interact with the DOM is a crucial skill for any web developer, and mastering it will help you create modern and interactive web applications.`
+            }
+        };
+
+        function openPopup(blogId) {
+            const popup = document.getElementById('popup');
+            const details = document.getElementById('popup-details');
+            const blog = blogData[blogId];
+            details.innerHTML = `<h2>${blog.title}</h2><p>${blog.content}</p>`;
+            popup.style.display = "flex"; // Show the popup
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = "none"; // Hide the popup
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                icon.innerHTML = '<path d="M12 2a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm5.657 3.343a1 1 0 0 1 1.414 0L20.485 6.1a1 1 0 1 1-1.414 1.414L17.657 6.1a1 1 0 0 1 0-1.414zM21 11a1 1 0 1 1 0 2h-2a1 1 0 1 1 0-2h2zm-2.929 6.071a1 1 0 0 1 0 1.414L18.1 20.485a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0zM12 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm-6.071-.929a1 1 0 0 1 1.414 0L8.757 18.1a1 1 0 0 1-1.414 1.414L6.1 18.1a1 1 0 0 1 0-1.414zM4 11a1 1 0 1 1 0 2H2a1 1 0 1 1 0-2h2zm2.343-5.657a1 1 0 0 1 0 1.414L4.929 8.1A1 1 0 0 1 3.515 6.686L4.929 5.272a1 1 0 0 1 1.414 0zM12 6a6 6 0 1 1 0 12A6 6 0 0 1 12 6z"/>';
+            } else { icon.innerHTML = '<path d="M12 4.354a.5.5 0 0 1 .5-.354 8 8 0 1 1-8 8 .5.5 0 0 1 .354-.5A6.5 6.5 0 0 0 12 4.354z"/>'; }
+        } </script>
+
+</body>
+
+</html>
